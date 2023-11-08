@@ -2,9 +2,9 @@
 
 |Column         |Type  |Options                 |
 |---------------|------|------------------------|
-|nickname       |string|null: false,unique: true|
+|nickname       |string|null: false|
 |email          |string|null: false,unique: true|
-|password       |string|null: false,unique: true|
+|password       |string|null: false|
 |first_name     |string|null: false             |
 |last_name      |string|null: false             |
 |first_name_kana|string|null: false             |
@@ -18,21 +18,21 @@ has_many :purchases
 
 ## items
 
-|Column       |Type      |Options                      |
-|-------------|----------|-----------------------------|
-|name         |string    |null: false                  |
-|explanation  |text      |null: false                  |
-|category     |integer   |null: false                  |
-|condition    |integer   |null: false                  |
-|postage      |integer   |null: false                  |
-|region       |integer   |null: false                  |
-|shipping_date|integer   |null: false                  |
-|price        |integer   |null: false                  |
-|user         |references|null: false,foreign_key: true|
+|Column          |Type      |Options                      |
+|----------------|----------|-----------------------------|
+|name            |string    |null: false                  |
+|explanation     |text      |null: false                  |
+|category_id     |integer   |null: false                  |
+|condition_id    |integer   |null: false                  |
+|postage_id      |integer   |null: false                  |
+|prefecture_id   |integer   |null: false                  |
+|shipping_date_id|integer   |null: false                  |
+|price           |integer   |null: false                  |
+|user            |references|null: false,foreign_key: true|
 
 ### Association
 belongs_to :user
-has_one :purchases
+has_one :purchase
 
 ## purchases
 
@@ -45,6 +45,7 @@ has_one :purchases
 ### Association
 belongs_to :user
 belongs_to :item
+belongs_to :mailing
 
 ## mailings
 
@@ -55,7 +56,7 @@ belongs_to :item
 |prefecture_id|integer   |null: false                  |
 |city         |string    |null: false                  |
 |block        |string    |null: false                  |
-|building     |string    |null: false                  |
+|building     |string    |                |
 |purchase     |references|null: false,foreign_key: true|
 
 ### Association
