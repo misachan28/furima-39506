@@ -61,3 +61,4 @@ belongs_to :mailing
 
 ### Association
 belongs_to :purchase
+
