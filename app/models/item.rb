@@ -10,10 +10,13 @@ class Item < ApplicationRecord
   belongs_to :shipping_date
   belongs_to :user
 
-  validates :image, presence: true
-  validates :nickname, presence: true
-  validates :explanation, presence: true
-  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+
+  with_options presence: true do
+    validates :image
+    validates :nickname
+    validates :explanation
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+  end
   validates :category_id, numericality: { other_than: 1 ,  message: "can't be blank" }
   validates :condition_id, numericality: { other_than: 1 , message: "can't be blank" }
   validates :postage_id, numericality: { other_than: 1 , message: "can't be blank" }
