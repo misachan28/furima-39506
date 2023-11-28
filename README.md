@@ -56,7 +56,7 @@ has_one :mailing
 |prefecture_id|integer   |null: false                  |
 |city         |string    |null: false                  |
 |block        |string    |null: false                  |
-|building     |string    |                |
+|building     |string    |                             |
 |purchase     |references|null: false,foreign_key: true|
 
 ### Association
