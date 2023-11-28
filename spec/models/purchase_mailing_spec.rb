@@ -72,10 +72,20 @@ RSpec.describe PurchaseMailing, type: :model do
         @purchase_mailing.valid?
         expect(@purchase_mailing.errors.full_messages).to include("Phone number is invalid")
       end
-      it "tokenが空では登録できないこと" do
+      it  'tokenが空では登録できないこと' do
         @purchase_mailing.token = nil
         @purchase_mailing.valid?
         expect(@purchase_mailing.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'userが紐づいていなければ購入できない' do
+        @purchase_mailing.user_id = nil
+        @purchase_mailing.valid?
+        expect(@purchase_mailing.errors.full_messages).to include("User can't be blank")
+      end
+      it 'itemが紐づいていなければ購入できない' do
+        @purchase_mailing.item_id = nil
+        @purchase_mailing.valid?
+        expect(@purchase_mailing.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
